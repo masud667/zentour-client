@@ -8,7 +8,7 @@ function App() {
           <h1>Zen Tour</h1>
       <progress className="progress w-56 text-amber-400"></progress>
     </div>
-  )
+  );
 }
 
 export default App
