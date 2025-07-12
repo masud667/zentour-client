@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useState, use } from "react";
 import { Link, useNavigate } from "react-router";
 import { motion } from "framer-motion";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { use } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const { createUser, signInWithGoogle, setUser, updateUserProfile } =
+    use(AuthContext);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,13 +34,13 @@ const Register = () => {
 
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
-      newErrors.email = "Invalid email";
+      newErrors.email = "Invalid email address";
 
     if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
-    } else if (!formData.password.match(/[A-Z]/)) {
+    } else if (!/[A-Z]/.test(formData.password)) {
       newErrors.password = "Must include uppercase letter";
-    } else if (!formData.password.match(/[a-z]/)) {
+    } else if (!/[a-z]/.test(formData.password)) {
       newErrors.password = "Must include lowercase letter";
     }
 
@@ -46,9 +51,67 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validate()) return;
+    if (!validate()) {
+      Swal.fire({
+        icon: "error",
+        title: "Validation Error",
+        text: "Please fix the form errors before submitting.",
+      });
+      return;
+    }
 
     setLoading(true);
+
+    createUser(formData.email, formData.password)
+      .then((result) => {
+        return updateUserProfile(formData.name, formData.photoURL).then(() => {
+          setUser({
+            ...result.user,
+            displayName: formData.name,
+            photoURL: formData.photoURL,
+          });
+          Swal.fire({
+            icon: "success",
+            title: "Account Created",
+            text: "Your account has been successfully created!",
+          }).then(() => {
+            navigate("/");
+          });
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: error.message,
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        setUser(result.user);
+        Swal.fire({
+          icon: "success",
+          title: "Signed in with Google",
+          text: `Welcome, ${result.user.displayName}!`,
+        }).then(() => {
+          navigate("/");
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Google Sign-In Failed",
+          text: error.message,
+        });
+      });
   };
 
   return (
@@ -76,18 +139,13 @@ const Register = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}>
-              Join our freelance community today
+              Join our ZenTour community today
             </motion.p>
           </div>
 
           <div className="p-6">
-            {errors.general && (
-              <div className="alert alert-error mb-4">
-                <div className="flex-1">{errors.general}</div>
-              </div>
-            )}
-
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Full Name */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Full Name
@@ -108,6 +166,7 @@ const Register = () => {
                 )}
               </div>
 
+              {/* Email */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address
@@ -129,6 +188,7 @@ const Register = () => {
                 )}
               </div>
 
+              {/* Photo URL */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Profile Photo URL{" "}
@@ -143,6 +203,7 @@ const Register = () => {
                 />
               </div>
 
+              {/* Password */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Password
@@ -175,6 +236,7 @@ const Register = () => {
                 </p>
               </div>
 
+              {/* Submit button */}
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -190,9 +252,11 @@ const Register = () => {
             </form>
 
             <div className="divider text-gray-400 my-6">OR</div>
+
+            {/* Google Sign In button */}
             <button
-             
-              className="btn btn-outline w-full mb-4">
+              onClick={handleGoogleSignIn}
+              className="btn btn-outline w-full mb-4 flex items-center justify-center">
               <img
                 src="https://www.svgrepo.com/show/475656/google-color.svg"
                 alt="Google"
@@ -217,7 +281,7 @@ const Register = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}>
-          © {new Date().getFullYear()} TaskFlow. All rights reserved.
+          © {new Date().getFullYear()} ZenTour. All rights reserved.
         </motion.div>
       </div>
     </motion.div>

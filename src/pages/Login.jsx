@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useContext, use } from "react";
 import { Link, useNavigate } from "react-router";
 import { motion } from "framer-motion";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { use } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { logIn, signInWithGoogle, setLoading } = use(AuthContext);
+
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLocalLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,28 +27,68 @@ const Login = () => {
 
   const validate = () => {
     const newErrors = {};
-
     if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       newErrors.email = "Invalid email";
     }
-
     if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!validate()) return;
 
-    setLoading(true);
-  
+    setLocalLoading(true);
+
+    logIn(formData.email, formData.password)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed!",
+          text: error.message,
+        });
+      })
+      .finally(() => {
+        setLocalLoading(false);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    setLocalLoading(true);
+    signInWithGoogle()
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Google Login Successful!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Google Login Failed!",
+          text: error.message,
+        });
+      })
+      .finally(() => {
+        setLocalLoading(false);
+      });
   };
 
   return (
@@ -83,12 +125,6 @@ const Login = () => {
           </div>
 
           <div className="p-6">
-            {errors.general && (
-              <div className="alert alert-error mb-4">
-                <div className="flex-1">{errors.general}</div>
-              </div>
-            )}
-
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -147,7 +183,11 @@ const Login = () => {
             </form>
 
             <div className="divider text-gray-400 my-6">OR</div>
-            <button className="btn btn-outline w-full mb-4">
+            <button
+              onClick={handleGoogleLogin}
+              className="btn btn-outline w-full mb-4"
+              disabled={loading}
+            >
               <img
                 src="https://www.svgrepo.com/show/475656/google-color.svg"
                 alt="Google"
@@ -174,7 +214,7 @@ const Login = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          © {new Date().getFullYear()} TaskFlow. All rights reserved.
+          © {new Date().getFullYear()} ZenTour. All rights reserved.
         </motion.div>
       </div>
     </motion.div>

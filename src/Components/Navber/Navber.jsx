@@ -7,11 +7,38 @@ import {
   FaHome,
   FaGlobeAsia,
 } from "react-icons/fa";
-import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { use } from "react";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+ const { user,logOut } = use(AuthContext);
+ 
+ const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOut()
+          .then(() => {
+            Swal.fire(
+              "Logged out!",
+              "You have been successfully logged out.",
+              "success"
+            );
+          })
+          .catch((error) => {
+            Swal.fire("Error!", error.message, "error");
+          });
+      }
+    });
+  };
   return (
     <div className="navbar bg-base-100 shadow-md px-4 py-3 sticky top-0 z-50">
       {/* Navbar start */}
@@ -159,7 +186,12 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 flex items-center justify-center text-white">
-                <FaUser />
+              {user?.photoURL ? (
+  <img src={user.photoURL} alt="User Photo" className="w-10 h-10 rounded-full" />
+) : (
+  <FaUser className="w-10 h-10 text-gray-500" />
+)}
+
               </div>
             </label>
             <ul
@@ -179,7 +211,10 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="border-t mt-1 pt-1">
-                <button>
+                <button
+                onClick={handleLogout}
+                >
+                
                   <FaSignOutAlt /> Logout
                 </button>
               </li>
