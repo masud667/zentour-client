@@ -20,13 +20,13 @@ const Banner = () => {
 
   const packageTypes = [
     { name: 'Tropical Escapes', icon: <FaUmbrellaBeach />, color: 'text-amber-300' },
-    { name: 'Mountain Expeditions', icon: <FaMountain />, color: 'text-emerald-300' },
+    { name: 'Mountain Expeditions', icon: <FaMountain  r/>, color: 'text-emerald-300' },
     { name: 'Cultural Journeys', icon: <FaLandmark />, color: 'text-purple-300' },
     { name: 'Luxury Voyages', icon: <FaShip />, color: 'text-sky-300' },
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-3xl shadow-2xl border-2 border-white/20">
+    <div className="relative overflow-hidden shadow-2xl border-2 border-white/20">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-600 via-teal-700 to-teal-800"></div>
       
