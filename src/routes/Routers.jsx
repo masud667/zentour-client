@@ -6,6 +6,7 @@ import Home from "../pages/home/Home";
 import ErrorPage from "../pages/errorPage/ErrorPage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AllPackagesPage from "../pages/AllPackagesPage/AllPackagesPage";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         },
     ]
   },
+ {
+  path: "/packages",
+   element : <AllPackagesPage />,
+ },
   {
     path: '/*',
     Component: ErrorPage,

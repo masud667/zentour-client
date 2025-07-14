@@ -1,11 +1,10 @@
 import React from 'react';
+import Banner from './Shared/Banner';
 
 const Home = () => {
     return (
-        <div className='text-5xl text-center pt-50'>
-          <h1>Zen Tour</h1>
-      <progress className="progress w-56 text-teal-600"></progress>
-    </div>
+<Banner></Banner>
+
     );
 };
 
