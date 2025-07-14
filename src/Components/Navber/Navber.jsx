@@ -83,16 +83,8 @@ const Navbar = () => {
                     <FaList /> My Bookings
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/add-package">
-                    <FaPlus /> Add Package
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/manage-packages">
-                    <FaList /> Manage Packages
-                  </NavLink>
-                </li>
+            
+               
               </>
             )}
           </ul>
@@ -153,28 +145,8 @@ const Navbar = () => {
                   <FaList className="mr-1" /> My Bookings
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/add-package"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-cyan-600 font-semibold"
-                      : "hover:text-cyan-500"
-                  }>
-                  <FaPlus className="mr-1" /> Add Package
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/manage-packages"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-cyan-600 font-semibold"
-                      : "hover:text-cyan-500"
-                  }>
-                  <FaList className="mr-1" /> Manage Packages
-                </NavLink>
-              </li>
+             
+            
             </>
           )}
         </ul>
