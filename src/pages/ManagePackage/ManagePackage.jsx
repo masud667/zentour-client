@@ -1,34 +1,36 @@
-import { Link } from 'react-router';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { FaEdit, FaTrash, FaPlus, FaSync, FaSearch } from 'react-icons/fa';
+import { Link } from "react-router";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { FaEdit, FaTrash, FaPlus, FaSync, FaSearch } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const ManagePackages = () => {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [error, setError] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [showEditModal, setShowEditModal] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    image: '',
-    description: '',
-    price: '',
-    duration: '',
-    destination: '',
-    departureLocation: '',
-    departureDate: '',
+    _id: "", // ✅ add _id field to track package id
+    name: "",
+    image: "",
+    description: "",
+    price: "",
+    duration: "",
+    destination: "",
+    departureLocation: "",
+    departureDate: "",
   });
 
   useEffect(() => {
     const fetchPackages = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:3000/packages');
+        const response = await axios.get("http://localhost:3000/packages");
         setPackages(response.data);
         setLoading(false);
       } catch (err) {
-        setError('Failed to fetch packages');
+        setError("Failed to fetch packages");
         setLoading(false);
       }
     };
@@ -43,21 +45,59 @@ const ManagePackages = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ✅ Function to open modal and set form data
+  const handleEditClick = (pkg) => {
+    setFormData({
+      _id: pkg._id,
+      name: pkg.name,
+      image: pkg.image,
+      description: pkg.description,
+      price: pkg.price,
+      duration: pkg.duration,
+      destination: pkg.destination,
+      departureLocation: pkg.departureLocation,
+      departureDate: pkg.departureDate.slice(0, 10),
+    });
+    setShowEditModal(true);
+  };
+
+  const handleUpdate = async () => {
+    try {
+        console.log("Sending to backend:", formData); 
+
+      await axios.put(`http://localhost:3000/packages/${formData._id}`, formData);
+      Swal.fire("Updated!", "Package updated successfully.", "success");
+
+      setShowEditModal(false);
+
+      // Reload packages
+      const response = await axios.get("http://localhost:3000/packages");
+      setPackages(response.data);
+    } catch (error) {
+      console.error("Error updating package:", error);
+      Swal.fire("Error", "Failed to update package.", "error");
+    }
+  };
+
   if (loading) return <p className="text-center py-10">Loading packages...</p>;
   if (error) return <p className="text-center py-10 text-red-500">{error}</p>;
 
   return (
-   <div>
-    
-     <div className="p-6 max-w-7xl mx-auto">
+    <div className="p-6 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Manage My Packages</h1>
         <div className="flex gap-2">
-          <button className="bg-blue-600 text-white px-3 py-1 rounded flex items-center">
-            <FaSync className="mr-1" />Refresh
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-blue-600 text-white px-3 py-1 rounded flex items-center"
+          >
+            <FaSync className="mr-1" /> Refresh
           </button>
-          <Link to="/add-package" className="bg-green-600 text-white px-3 py-1 rounded flex items-center">
-            <FaPlus className="mr-1" />Add New
+          <Link
+            to="/add-package"
+            className="bg-green-600 text-white px-3 py-1 rounded flex items-center"
+          >
+            <FaPlus className="mr-1" /> Add New
           </Link>
         </div>
       </div>
@@ -87,21 +127,26 @@ const ManagePackages = () => {
           </thead>
           <tbody>
             {packages
-              .filter(pkg =>
-                pkg.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                pkg.destination.toLowerCase().includes(searchTerm.toLowerCase())
+              .filter(
+                (pkg) =>
+                  pkg.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  pkg.destination?.toLowerCase().includes(searchTerm.toLowerCase())
               )
-              .map(pkg => (
+              .map((pkg) => (
                 <tr key={pkg._id} className="border-t">
                   <td className="px-4 py-2">{pkg.name}</td>
                   <td className="px-4 py-2">{pkg.destination}</td>
                   <td className="px-4 py-2">
-                    {pkg.departureLocation} <br /> {new Date(pkg.departureDate).toLocaleDateString()}
+                    {pkg.departureLocation} <br />
+                    {new Date(pkg.departureDate).toLocaleDateString()}
                   </td>
                   <td className="px-4 py-2">${pkg.price}</td>
                   <td className="px-4 py-2">{pkg.bookingCount || 0}</td>
                   <td className="px-4 py-2 text-right">
-                    <button onClick={() => setShowEditModal(true)} className="text-blue-600 mr-2">
+                    <button
+                      onClick={() => handleEditClick(pkg)}
+                      className="text-blue-600 mr-2"
+                    >
                       <FaEdit />
                     </button>
                     <button className="text-red-600">
@@ -185,7 +230,11 @@ const ManagePackages = () => {
                 >
                   Cancel
                 </button>
-                <button type="button" className="bg-blue-600 text-white px-4 py-2 rounded">
+                <button
+                  type="button"
+                  onClick={handleUpdate}
+                  className="bg-blue-600 text-white px-4 py-2 rounded"
+                >
                   Update
                 </button>
               </div>
@@ -194,7 +243,6 @@ const ManagePackages = () => {
         </div>
       )}
     </div>
-   </div>
   );
 };
 
