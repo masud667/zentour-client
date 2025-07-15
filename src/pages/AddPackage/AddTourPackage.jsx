@@ -30,7 +30,7 @@ const AddTourPackage = () => {
 
       // Send to backend using Axios
       const res = await axios.post(
-        "http://localhost:3000/tourPackages",
+        "http://localhost:3000/Packages",
         plainData
       );
 

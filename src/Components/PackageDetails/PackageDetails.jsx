@@ -85,7 +85,9 @@ const PackageDetails = () => {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="mt-4 text-gray-600 font-medium">Loading tour details...</p>
+          <p className="mt-4 text-gray-600 font-medium">
+            Loading tour details...
+          </p>
         </div>
       </div>
     );
@@ -96,12 +98,16 @@ const PackageDetails = () => {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
         <div className="text-center p-8 bg-white rounded-xl shadow-lg max-w-md">
           <div className="text-5xl mb-4">😢</div>
-          <h2 className="text-2xl font-bold text-red-500 mb-2">Package Not Found</h2>
-          <p className="text-gray-600 mb-6">The tour package you're looking for doesn't exist or has been removed.</p>
+          <h2 className="text-2xl font-bold text-red-500 mb-2">
+            Package Not Found
+          </h2>
+          <p className="text-gray-600 mb-6">
+            The tour package you're looking for doesn't exist or has been
+            removed.
+          </p>
           <button
             onClick={() => navigate("/packages")}
-            className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-medium py-2 px-6 rounded-lg transition-all"
-          >
+            className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-medium py-2 px-6 rounded-lg transition-all">
             Browse Other Tours
           </button>
         </div>
@@ -117,8 +123,7 @@ const PackageDetails = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8"
-      >
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="lg:col-span-2">
@@ -129,16 +134,22 @@ const PackageDetails = () => {
                 className="w-full h-96 object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                <h1 className="text-3xl font-bold text-white">{tourPackage.name}</h1>
+                <h1 className="text-3xl font-bold text-white">
+                  {tourPackage.name}
+                </h1>
               </div>
             </div>
 
             <div className="mt-6 bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold mb-4 text-gray-800">Full Description</h2>
+              <h2 className="text-xl font-bold mb-4 text-gray-800">
+                Full Description
+              </h2>
               <p className="text-gray-600 mt-2">
-  Join our <span className="font-medium">{tourPackage.name}</span> tour to explore {tourPackage.destination} for {tourPackage.duration}. Guided by <span className="font-medium">{tourPackage.guide}</span>.
-</p>
-
+                Join our <span className="font-medium">{tourPackage.name}</span>{" "}
+                tour to explore {tourPackage.destination} for{" "}
+                {tourPackage.duration}. Guided by{" "}
+                <span className="font-medium">{tourPackage.guide}</span>.
+              </p>
             </div>
           </div>
 
@@ -159,7 +170,9 @@ const PackageDetails = () => {
                     />
                     <div className="ml-3">
                       <p className="font-medium">{tourPackage.guide}</p>
-                      <p className="text-sm text-gray-600">Contact: {tourPackage.guideContact}</p>
+                      <p className="text-sm text-gray-600">
+                        Contact: {tourPackage.guideContact}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -177,8 +190,12 @@ const PackageDetails = () => {
                   <p className="font-medium">{tourPackage.bookingCount}</p>
                 </div>
                 <div className="mb-2">
-                  <span className="text-gray-600">Departure Location & Date:</span>
-                  <p className="font-medium">{tourPackage.departureLocation} — {tourPackage.departure}</p>
+                  <span className="text-gray-600">
+                    Departure Location & Date:
+                  </span>
+                  <p className="font-medium">
+                    {tourPackage.departureLocation} — {tourPackage.departure}
+                  </p>
                 </div>
                 <div className="mb-4">
                   <span className="text-gray-600">Destination:</span>
@@ -187,8 +204,7 @@ const PackageDetails = () => {
 
                 <button
                   onClick={() => setShowModal(true)}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                >
+                  className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                   Book Now
                 </button>
               </div>
@@ -202,15 +218,15 @@ const PackageDetails = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4"
-        >
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
           <motion.div
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
-            className="bg-white rounded-2xl max-w-md w-full overflow-hidden"
-          >
+            className="bg-white rounded-2xl max-w-md w-full overflow-hidden">
             <div className="bg-gradient-to-r from-cyan-500 to-teal-500 p-4">
-              <h3 className="text-xl font-bold text-white">Confirm Your Booking</h3>
+              <h3 className="text-xl font-bold text-white">
+                Confirm Your Booking
+              </h3>
             </div>
             <div className="p-6">
               <div className="mb-4">
@@ -235,27 +251,26 @@ const PackageDetails = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Special Note (optional)</label>
+                <label className="block text-gray-700 mb-2">
+                  Special Note (optional)
+                </label>
                 <textarea
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Any special request..."
                   rows="3"
                   value={specialNote}
-                  onChange={(e) => setSpecialNote(e.target.value)}
-                ></textarea>
+                  onChange={(e) => setSpecialNote(e.target.value)}></textarea>
               </div>
 
               <div className="flex justify-between mt-6">
                 <button
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
-                >
+                  className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
                   Cancel
                 </button>
                 <button
                   onClick={handleBooking}
-                  className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-teal-600 hover:to-cyan-700 text-white font-medium rounded-lg shadow hover:shadow-md transition-all"
-                >
+                  className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-teal-600 hover:to-cyan-700 text-white font-medium rounded-lg shadow hover:shadow-md transition-all">
                   Confirm Booking
                 </button>
               </div>
