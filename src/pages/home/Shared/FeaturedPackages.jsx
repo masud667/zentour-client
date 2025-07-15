@@ -29,7 +29,9 @@ const FeaturedPackages = () => {
   const handleShowAll = () => {
     navigate("/packages");
   };
-
+const handlePackages =()=>{
+  navigate('/packages')
+}
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i) => ({
@@ -162,6 +164,7 @@ const FeaturedPackages = () => {
                     <p className="text-2xl font-bold text-cyan-700">{pkg.price}</p>
                   </div>
                   <motion.button
+                  onClick={handlePackages}
                     whileHover={{ backgroundColor: "#0e7490", scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-5 py-2.5 rounded-full font-medium flex items-center"

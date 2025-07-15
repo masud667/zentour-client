@@ -9,6 +9,7 @@ import AddPackage from "../pages/AddPackage/AddPackage";
 import MyBookings from "../pages/MyBookings/MyBookings";
 import ManagePackage from "../pages/ManagePackage/ManagePackage";
 import PrivateRoute from "../context/PrivateRoute";
+import PackageDetails from "../Components/PackageDetails/PackageDetails";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,16 @@ const router = createBrowserRouter([
   {
     path: "/packages",
     Component: AllPackagesPage,
+    loader: () => fetch("/allpackage.json"),
+  },
+  {
+    path: "/packages/:id",
+    element: (
+      <PrivateRoute>
+        <PackageDetails></PackageDetails>
+      </PrivateRoute>
+    ),
+    loader: () => fetch("/allpackage.json"),
   },
   {
     path: "/add-package",
