@@ -11,7 +11,7 @@ const ManagePackages = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showEditModal, setShowEditModal] = useState(false);
   const [formData, setFormData] = useState({
-    _id: "", // ✅ add _id field to track package id
+    _id: "",
     name: "",
     image: "",
     description: "",
@@ -45,7 +45,7 @@ const ManagePackages = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ✅ Function to open modal and set form data
+  //  Function to open modal and set form data
   const handleEditClick = (pkg) => {
     setFormData({
       _id: pkg._id,
@@ -61,11 +61,13 @@ const ManagePackages = () => {
     setShowEditModal(true);
   };
 
+  //handle update
   const handleUpdate = async () => {
     try {
-        console.log("Sending to backend:", formData); 
-
-      await axios.put(`http://localhost:3000/packages/${formData._id}`, formData);
+      await axios.put(
+        `http://localhost:3000/packages/${formData._id}`,
+        formData
+      );
       Swal.fire("Updated!", "Package updated successfully.", "success");
 
       setShowEditModal(false);
@@ -79,24 +81,51 @@ const ManagePackages = () => {
     }
   };
 
+  // Delete handler
+  const handleDelete = async (id) => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!",
+      });
+
+      if (result.isConfirmed) {
+        await axios.delete(`http://localhost:3000/packages/${id}`);
+        Swal.fire("Deleted!", "Package has been deleted.", "success");
+
+        // Update UI after delete
+        setPackages((prevPackages) =>
+          prevPackages.filter((pkg) => pkg._id !== id)
+        );
+      }
+    } catch (error) {
+      console.error("Error deleting package:", error);
+      Swal.fire("Error", "Failed to delete package.", "error");
+    }
+  };
+
   if (loading) return <p className="text-center py-10">Loading packages...</p>;
   if (error) return <p className="text-center py-10 text-red-500">{error}</p>;
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+   <div>
+     <div className="p-6 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Manage My Packages</h1>
         <div className="flex gap-2">
           <button
             onClick={() => window.location.reload()}
-            className="bg-blue-600 text-white px-3 py-1 rounded flex items-center"
-          >
+            className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 rounded flex items-center">
             <FaSync className="mr-1" /> Refresh
           </button>
           <Link
             to="/add-package"
-            className="bg-green-600 text-white px-3 py-1 rounded flex items-center"
-          >
+            className="bg-teal-600 text-white px-3 py-1 rounded flex items-center">
             <FaPlus className="mr-1" /> Add New
           </Link>
         </div>
@@ -130,7 +159,9 @@ const ManagePackages = () => {
               .filter(
                 (pkg) =>
                   pkg.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                  pkg.destination?.toLowerCase().includes(searchTerm.toLowerCase())
+                  pkg.destination
+                    ?.toLowerCase()
+                    .includes(searchTerm.toLowerCase())
               )
               .map((pkg) => (
                 <tr key={pkg._id} className="border-t">
@@ -145,11 +176,12 @@ const ManagePackages = () => {
                   <td className="px-4 py-2 text-right">
                     <button
                       onClick={() => handleEditClick(pkg)}
-                      className="text-blue-600 mr-2"
-                    >
+                      className="text-cyan-600 mr-2">
                       <FaEdit />
                     </button>
-                    <button className="text-red-600">
+                    <button
+                      onClick={() => handleDelete(pkg._id)}
+                      className="text-red-600">
                       <FaTrash />
                     </button>
                   </td>
@@ -220,21 +252,18 @@ const ManagePackages = () => {
                 onChange={handleInputChange}
                 placeholder="Description"
                 className="border px-3 py-2 rounded md:col-span-2"
-                rows="3"
-              ></textarea>
+                rows="3"></textarea>
               <div className="md:col-span-2 flex justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setShowEditModal(false)}
-                  className="border px-4 py-2 rounded"
-                >
+                  className="border px-4 py-2 rounded">
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={handleUpdate}
-                  className="bg-blue-600 text-white px-4 py-2 rounded"
-                >
+                  className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded">
                   Update
                 </button>
               </div>
@@ -243,6 +272,7 @@ const ManagePackages = () => {
         </div>
       )}
     </div>
+   </div>
   );
 };
 

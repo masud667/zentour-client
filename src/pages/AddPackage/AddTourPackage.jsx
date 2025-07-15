@@ -8,7 +8,7 @@ const AddTourPackage = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const { user } = use(AuthContext);
-  console.log(user);
+ 
   const onSubmit = async (formDataObj) => {
     try {
       // Create FormData object for form entries
