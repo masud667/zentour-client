@@ -26,9 +26,9 @@ const Banner = () => {
   ];
 
   return (
-    <div className="relative overflow-hidden shadow-2xl border-2 border-white/20">
+    <div className="relative overflow-hidden shadow-2xl  border-white/20">
       {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-600 via-teal-700 to-teal-800"></div>
+      <div className="absolute inset-0 text-base-100"></div>
       
       {/* Asymmetric Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full">
@@ -71,7 +71,7 @@ const Banner = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
           >
             Embark on Your <span className="text-cyan-300">Next Great</span> Adventure
           </motion.h1>
@@ -80,7 +80,7 @@ const Banner = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-xl text-cyan-100 mb-8 max-w-xl"
+            className="text-xl mb-8 max-w-xl"
           >
             Discover handcrafted journeys to the world's most breathtaking destinations. 
             Where will your wanderlust take you next?
@@ -92,10 +92,10 @@ const Banner = () => {
             transition={{ delay: 0.6, duration: 0.5 }}
           >
             <motion.button 
-              whileHover={{ scale: 1.05, backgroundColor: "#0e7490" }}
+              whileHover={{ scale: 1.05}}
               whileTap={{ scale: 0.98 }}
               onClick={handleExploreClick}
-              className="btn btn-lg bg-cyan-700 text-white hover:bg-cyan-800 border-0 shadow-lg
+              className="btn btn-lg border-1 border-base shadow-lg
                         rounded-full px-8 font-bold text-lg
                         flex items-center group transition-all"
             >
@@ -132,8 +132,8 @@ const Banner = () => {
                           transition-all hover:shadow-xl`}
               >
                 <div className={`text-3xl mb-3 ${type.color}`}>{type.icon}</div>
-                <div className="font-bold text-white">{type.name}</div>
-                <div className="mt-2 text-cyan-200 text-sm">From $499</div>
+                <div className="font-bold ">{type.name}</div>
+                <div className="mt-2 text-cyan-600 text-sm">From $499</div>
               </motion.div>
             ))}
           </div>

@@ -72,7 +72,7 @@ const ZenExperiences = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-16 bg-base-100 text-base-content">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -80,7 +80,7 @@ const ZenExperiences = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-cyan-900 mb-4">
+            className="text-4xl md:text-5xl font-bold text-cyan-600 mb-4">
             Serene Bangladesh Experiences
           </motion.h2>
           <motion.div
@@ -104,21 +104,21 @@ const ZenExperiences = () => {
           {/* Left Column - Featured Experience */}
           <div className="lg:col-span-2">
             <div
-              className={`bg-gradient-to-br ${experiences[activeExperience].color} rounded-3xl overflow-hidden shadow-lg h-full`}>
+              className={`bg-base-100 border-1 border-base-300 rounded-3xl overflow-hidden shadow-lg h-full`}>
               <div className="p-8 h-full flex flex-col">
                 <div className="flex justify-between items-start mb-6">
                   <div>
                     <div className="flex items-center mb-2">
                       {experiences[activeExperience].icon}
-                      <span className="ml-2 text-slate-600">
+                      <span className="ml-2 text-base-content">
                         {experiences[activeExperience].location}
                       </span>
                     </div>
-                    <h3 className="text-3xl   font-medium text-slate-800">
+                    <h3 className="text-3xl   font-medium text-base-content">
                       {experiences[activeExperience].title}
                     </h3>
                   </div>
-                  <div className="flex items-center bg-white px-3 py-1 rounded-full">
+                  <div className="flex items-center bg-base-100 px-3 py-1 rounded-full">
                     <FaStar className="text-amber-400 mr-1" />
                     <span className="font-medium">
                       {experiences[activeExperience].rating}
@@ -126,12 +126,12 @@ const ZenExperiences = () => {
                   </div>
                 </div>
 
-                <p className="text-slate-700 text-lg mb-8 flex-grow">
+                <p className="text-base-700 text-lg mb-8 flex-grow">
                   {experiences[activeExperience].description}
                 </p>
 
                 <div className="flex justify-between items-center">
-                  <span className="bg-white px-4 py-2 rounded-full font-medium text-slate-700">
+                  <span className="bg-base-100 px-4 py-2 rounded-full font-medium text-base-content">
                     {experiences[activeExperience].duration}
                   </span>
                   <Link
@@ -152,7 +152,7 @@ const ZenExperiences = () => {
                 onClick={() => setActiveExperience(index)}
                 className={`cursor-pointer transition-all duration-300 ${
                   index === activeExperience
-                    ? "border-l-4 border-teal-500 bg-white shadow-lg"
+                    ? "border-l-4 border-teal-500 bg-base-100 shadow-lg"
                     : "border-l-4 border-slate-100 hover:border-l-4 hover:border-emerald-300"
                 } rounded-r-2xl p-6`}>
                 <div className="flex items-center justify-between">
@@ -168,13 +168,13 @@ const ZenExperiences = () => {
                     <h4
                       className={`font-medium ${
                         index === activeExperience
-                          ? "text-slate-800"
-                          : "text-slate-600"
+                          ? "text-base-800"
+                          : "text-base-600"
                       }`}>
                       {exp.title}
                     </h4>
                   </div>
-                  <span className="text-sm text-slate-500">{exp.duration}</span>
+                  <span className="text-sm text-base-500">{exp.duration}</span>
                 </div>
               </div>
             ))}
@@ -183,33 +183,33 @@ const ZenExperiences = () => {
             <div className="flex justify-center mt-8 space-x-4 lg:hidden">
               <button
                 onClick={prevExperience}
-                className="btn btn-circle bg-white border border-slate-200 hover:bg-slate-50">
-                <FaArrowLeft className="text-slate-600" />
+                className="btn btn-circle bg-base-100 border border-slate-200 hover:border-cyan-600">
+                <FaArrowLeft className="text-base-600" />
               </button>
               <button
                 onClick={nextExperience}
-                className="btn btn-circle bg-white border border-slate-200 hover:bg-slate-50">
-                <FaArrowRight className="text-slate-600" />
+                className="btn btn-circle bg-base-100 border border-slate-200 hover:border-cyan-600">
+                <FaArrowRight className="text-base-600" />
               </button>
             </div>
 
             {/* Testimonial */}
-            <div className="mt-10 bg-gradient-to-r from-slate-50 to-white rounded-2xl p-6 border border-slate-100">
+            <div className="mt-10 bg-base-100 rounded-2xl p-6 border border-slate-100">
               <div className="flex items-start">
                 <div className="bg-gradient-to-br from-amber-400 to-orange-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
                   A
                 </div>
                 <div>
-                  <p className="text-slate-700 italic mb-2">
+                  <p className="text-base-content italic mb-2">
                     "The Sundarbans meditation journey transformed my connection
                     with nature. The stillness of the mangroves at dawn is pure
                     magic."
                   </p>
                   <div className="flex items-center">
-                    <span className="font-medium text-slate-800">
+                    <span className="font-medium text-base-800">
                       Ayesha Rahman
                     </span>
-                    <span className="mx-2 text-slate-400">•</span>
+                    <span className="mx-2 text-base-400">•</span>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
                         <FaStar key={i} className="text-amber-400" />
@@ -223,12 +223,12 @@ const ZenExperiences = () => {
         </div>
 
         {/* Cultural Insight */}
-        <div className="mt-16 max-w-4xl mx-auto bg-gradient-to-r from-emerald-50 to-teal-50 rounded-3xl p-8 text-center border border-emerald-100">
-          <h3 className="text-2xl   text-slate-800 mb-4">
+        <div className="mt-16 max-w-4xl mx-auto bg-base-100 rounded-3xl p-8 text-center border border-emerald-100">
+          <h3 className="text-2xl   text-base-800 mb-4">
             "In Bangladesh, the rivers teach us to flow, the forests teach us
             resilience, and the people teach us warmth."
           </h3>
-          <p className="text-slate-700">
+          <p className="text-base-700">
             Discover the wisdom of Bengali Baul mystics, the harmony of diverse
             faiths coexisting, and the deep connection to nature that defines
             our Zen journeys.

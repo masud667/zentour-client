@@ -14,7 +14,7 @@ const MyBookings = () => {
       const token = await user.getIdToken();
 
       try {
-        const res = await axios.get("http://localhost:3000/bookings", {
+        const res = await axios.get("https://zen-tour-server.vercel.app/bookings", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -38,7 +38,7 @@ const MyBookings = () => {
       // Get Firebase ID token
       const token = await user.getIdToken();
       await axios.patch(
-        `http://localhost:3000/bookings/${id}`,
+        `https://zen-tour-server.vercel.app/bookings/${id}`,
         { status: "completed" },
         {
           headers: {
@@ -50,7 +50,7 @@ const MyBookings = () => {
       Swal.fire("Confirmed!", "Booking marked as completed.", "success");
 
       // Reload updated bookings
-      const res = await axios.get(`http://localhost:3000/bookings`, {
+      const res = await axios.get(`https://zen-tour-server.vercel.app/bookings`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -72,11 +72,11 @@ const MyBookings = () => {
       <h1 className="text-2xl font-bold mb-6">My Bookings</h1>
 
       {bookings.length === 0 ? (
-        <p className="text-center py-6 text-gray-500">No bookings found.</p>
+        <p className="text-center py-6 text-cyan-500">No bookings found.</p>
       ) : (
-        <div className="bg-white shadow rounded overflow-x-auto">
+        <div className="bg-base-100 shadow rounded overflow-x-auto">
           <table className="min-w-full text-sm">
-            <thead className="bg-gray-100">
+            <thead className="bg-base-100">
               <tr>
                 <th className="px-4 py-2 text-left">Tour Name</th>
                 <th className="px-4 py-2 text-left">Guide Info</th>

@@ -30,7 +30,7 @@ const AddTourPackage = () => {
 
       // Send to backend using Axios
       const res = await axios.post(
-        "http://localhost:3000/Packages",
+        "https://zen-tour-server.vercel.app/Packages",
         plainData
       );
 
@@ -51,7 +51,7 @@ const AddTourPackage = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white p-8 rounded shadow">
+    <div className="max-w-2xl mx-auto bg-base-100 p-8 rounded shadow">
       <h2 className="text-2xl font-bold mb-6">Add Tour Package</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <input

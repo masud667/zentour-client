@@ -1,4 +1,6 @@
 import { Link, NavLink } from "react-router";
+import React, { useEffect, useState } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
 import {
   FaUser,
   FaSignOutAlt,
@@ -12,9 +14,24 @@ import { use } from "react";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
- const { user,logOut } = use(AuthContext);
- 
- const handleLogout = () => {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+  };
+
+  const { user, logOut } = use(AuthContext);
+
+  const handleLogout = () => {
     Swal.fire({
       title: "Are you sure?",
       text: "You will be logged out!",
@@ -79,12 +96,10 @@ const Navbar = () => {
             {user && (
               <>
                 <li>
-                  <NavLink to="/my-bookings">
+                  <NavLink to="/bookings">
                     <FaList /> My Bookings
                   </NavLink>
                 </li>
-            
-               
               </>
             )}
           </ul>
@@ -145,8 +160,6 @@ const Navbar = () => {
                   <FaList className="mr-1" /> My Bookings
                 </NavLink>
               </li>
-             
-            
             </>
           )}
         </ul>
@@ -158,12 +171,15 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 flex items-center justify-center text-white">
-              {user?.photoURL ? (
-  <img src={user.photoURL} alt="User Photo" className="w-10 h-10 rounded-full" />
-) : (
-  <FaUser className="w-10 h-10 text-gray-500" />
-)}
-
+                {user?.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt="User Photo"
+                    className="w-10 h-10 rounded-full"
+                  />
+                ) : (
+                  <FaUser className="w-10 h-10 text-gray-500" />
+                )}
               </div>
             </label>
             <ul
@@ -183,17 +199,14 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="border-t mt-1 pt-1">
-                <button
-                onClick={handleLogout}
-                >
-                
+                <button onClick={handleLogout}>
                   <FaSignOutAlt /> Logout
                 </button>
               </li>
             </ul>
           </div>
         ) : (
-          <div className="space-x-1">
+          <div className="space-x-1 flex gap-2">
             <Link
               to="/login"
               className="btn bg-gradient-to-r from-cyan-500 to-teal-500 text-white hover:from-cyan-600 hover:to-teal-600 border-0">
@@ -207,6 +220,12 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      <button
+        onClick={toggleTheme}
+        className="btn btn-sm btn-circle ml-2 p-1 text-4xl"
+        title="Toggle Theme">
+        {theme === "light" ? <FaMoon /> : <FaSun />}
+      </button>
     </div>
   );
 };

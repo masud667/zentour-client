@@ -70,7 +70,7 @@ const MindfulRetreats = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-20bg-base-100 text-base-content">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -78,7 +78,7 @@ const MindfulRetreats = () => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="text-4xl md:text-5xl font-bold text-cyan-900 mb-4">
+                    className="text-4xl md:text-5xl font-bold text-cyan-600 mb-4">
                    Mindful Retreats of Bangladesh
                   </motion.h2>
                   <motion.div
@@ -100,13 +100,13 @@ const MindfulRetreats = () => {
           {retreats.map(retreat => (
             <div 
               key={retreat.id}
-              className="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+              className="bg-base-100 text-base-content rounded-3xl overflow-hidden shadow-xl border-base-300 border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
             >
               {/* Retreat Header */}
-              <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white p-6">
+              <div className="bg-gradient-to-r from-cyan-800 to-slate-900 text-white p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
-                    <div className="bg-white bg-opacity-20 p-2 rounded-lg mr-3">
+                    <div className="bg-base-100 bg-opacity-20 p-2 rounded-lg mr-3">
                       {retreat.icon}
                     </div>
                     <span className="font-medium">{retreat.location}</span>
@@ -121,16 +121,16 @@ const MindfulRetreats = () => {
               
               {/* Retreat Body */}
               <div className="p-6">
-                <p className="text-slate-700 mb-6">{retreat.description}</p>
+                <p className="bg-base-100 text-base-content mb-6">{retreat.description}</p>
                 
                 {/* Features */}
                 <div className="mb-6">
-                  <h4 className="font-medium text-slate-800 mb-3">Experience Includes:</h4>
+                  <h4 className="font-medium text-base-800 mb-3">Experience Includes:</h4>
                   <ul className="grid grid-cols-2 gap-2">
                     {retreat.features.map((feature, index) => (
                       <li key={index} className="flex items-center">
                         <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                        <span className="text-slate-600 text-sm">{feature}</span>
+                        <span className="text-base-600 text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -138,11 +138,11 @@ const MindfulRetreats = () => {
                 
                 {/* Details */}
                 <div className="flex justify-between items-center mb-6">
-                  <div className="flex items-center text-slate-600">
+                  <div className="flex items-center text-base-600">
                     <FaCalendarAlt className="mr-2" />
                     <span>{retreat.duration}</span>
                   </div>
-                  <div className="flex items-center text-slate-600">
+                  <div className="flex items-center text-base-600">
                     <FaUsers className="mr-2" />
                     <span>{retreat.groupSize}</span>
                   </div>
@@ -150,8 +150,8 @@ const MindfulRetreats = () => {
                 
                 {/* Price and CTA */}
                 <div className="flex justify-between items-center">
-                  <span className="text-2xl   font-medium text-slate-800">{retreat.price}</span>
-                  <button className="btn bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-0 hover:from-cyan-600 hover:to-teal-600 px-6 rounded-full">
+                  <span className="text-2xl   font-medium text-base-800">{retreat.price}</span>
+                  <button className="btn bg-gradient-to-r from-cyan-500 to-teal-500 text-base-content border-0 hover:from-cyan-600 hover:to-teal-600 px-6 rounded-full">
                     Reserve
                   </button>
                 </div>
@@ -161,13 +161,13 @@ const MindfulRetreats = () => {
         </div>
 
         {/* Local Practices Section */}
-        <div className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-3xl p-8 mb-16 border border-teal-100">
+        <div className="bg-base-100 rounded-3xl p-8 mb-16 border border-teal-100">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <h3 className="text-3xl   font-light text-slate-800 mb-4">
+              <h3 className="text-3xl   font-light text-base-content mb-4">
                 Traditional Bangladeshi Mindfulness Practices
               </h3>
-              <p className="text-slate-600 max-w-2xl mx-auto">
+              <p className="text-base-600 max-w-2xl mx-auto">
                 Ancient techniques passed down through generations that cultivate peace and awareness
               </p>
             </div>
@@ -176,13 +176,13 @@ const MindfulRetreats = () => {
               {practices.map(practice => (
                 <div 
                   key={practice.id}
-                  className="bg-white bg-opacity-70 rounded-2xl p-6 text-center hover:bg-white transition-all"
+                  className="bg-base-100 border border-cyan-300 bg-opacity-70 rounded-2xl p-6 text-center hover:bg-base-100 transition-all"
                 >
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-teal-100 mb-5">
                     <span className="text-2xl">{practice.icon}</span>
                   </div>
-                  <h4 className="text-xl font-medium text-slate-800 mb-2">{practice.title}</h4>
-                  <p className="text-slate-600">{practice.description}</p>
+                  <h4 className="text-xl font-medium text-base-800 mb-2">{practice.title}</h4>
+                  <p className="text-base-600">{practice.description}</p>
                 </div>
               ))}
             </div>
@@ -190,22 +190,22 @@ const MindfulRetreats = () => {
         </div>
 
         {/* Wisdom Section */}
-        <div className="flex flex-col lg:flex-row items-center bg-gradient-to-r from-slate-800 to-slate-900 rounded-3xl overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-center bg-base-100 rounded-3xl overflow-hidden">
           <div className="lg:w-1/2 p-10 lg:p-16">
-            <div className="inline-block bg-gradient-to-r from-amber-400 to-orange-500 text-white px-4 py-1 rounded-full mb-4">
+            <div className="inline-block bg-gradient-to-r from-amber-400 to-orange-500 text-base-content px-4 py-1 rounded-full mb-4">
               Bengali Wisdom
             </div>
-            <h3 className="text-3xl   text-white mb-6">
+            <h3 className="text-3xl   text-base-content mb-6">
               "The river doesn't rush, yet it always reaches the sea"
             </h3>
-            <p className="text-slate-300 mb-8">
+            <p className="text-base-content mb-8">
               In Bangladesh, we learn patience from the rivers, resilience from the mangroves, and harmony from the six seasons. Our mindfulness practices are woven into daily life - in the rhythm of boat oars, the preparation of tea, and the sharing of meals.
             </p>
-            <button className="btn btn-outline text-white border-white hover:bg-white hover:text-slate-800 rounded-full px-8">
+            <button className="btn btn-outline text-base-content border-white hover:bg-base-100 hover:text-base-800 rounded-full px-8">
               Discover Our Philosophy
             </button>
           </div>
-          <div className="lg:w-1/2 relative">
+          <div className="w-3/5 lg:1/2 relative">
             <div className="grid grid-cols-2 gap-4 p-6">
               <div className="bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl h-48"></div>
               <div className="bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl h-48 mt-8"></div>
@@ -213,8 +213,8 @@ const MindfulRetreats = () => {
               <div className="bg-gradient-to-br from-violet-500 to-purple-500 rounded-2xl h-48 mt-8"></div>
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white w-24 h-24 rounded-full flex items-center justify-center">
-                <FaYinYang className="text-3xl text-slate-800" />
+              <div className="bg-base-100 w-24 h-24 rounded-full flex items-center justify-center">
+               <span className='text-3xl'>✈️</span>
               </div>
             </div>
           </div>

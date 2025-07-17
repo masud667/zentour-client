@@ -119,13 +119,13 @@ const Register = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 to-teal-100 p-4">
+      className="min-h-screen flex items-center justify-center bg-base-100 p-4">
       <div className="w-full max-w-md">
         <motion.div
           initial={{ scale: 0.95 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, duration: 0.3 }}
-          className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          className="bg-base-100 rounded-2xl shadow-xl overflow-hidden">
           <div className="bg-gradient-to-r from-cyan-500 to-teal-500 p-6 text-center">
             <motion.h2
               className="text-3xl font-bold text-white"
@@ -144,10 +144,10 @@ const Register = () => {
           </div>
 
           <div className="p-6">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 bg-base-100">
               {/* Full Name */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-base-content mb-1">
                   Full Name
                 </label>
                 <input
@@ -168,7 +168,7 @@ const Register = () => {
 
               {/* Email */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-base-content mb-1">
                   Email Address
                 </label>
                 <input
@@ -190,9 +190,9 @@ const Register = () => {
 
               {/* Photo URL */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-base-content mb-1">
                   Profile Photo URL{" "}
-                  <span className="text-gray-400">(optional)</span>
+                  <span className="text-base-content">(optional)</span>
                 </label>
                 <input
                   name="photoURL"
@@ -205,7 +205,7 @@ const Register = () => {
 
               {/* Password */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-base-content mb-1">
                   Password
                 </label>
                 <div className="relative">
@@ -223,7 +223,7 @@ const Register = () => {
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-3 text-gray-400 hover:text-teal-600"
+                    className="absolute right-3 top-3 text-base-content hover:text-teal-600"
                     onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
@@ -251,12 +251,12 @@ const Register = () => {
               </motion.button>
             </form>
 
-            <div className="divider text-gray-400 my-6">OR</div>
+            <div className="divider text-base-content my-6">OR</div>
 
             {/* Google Sign In button */}
             <button
               onClick={handleGoogleSignIn}
-              className="btn btn-outline w-full mb-4 flex items-center justify-center">
+              className="btn btn-outline w-full mb-4 flex items-center justify-center bg-base-100">
               <img
                 src="https://www.svgrepo.com/show/475656/google-color.svg"
                 alt="Google"
@@ -265,7 +265,7 @@ const Register = () => {
               Sign up with Google
             </button>
 
-            <p className="mt-6 text-center text-sm text-gray-600">
+            <p className="mt-6 text-center text-sm text-base-content">
               Already have an account?{" "}
               <Link
                 to="/login"
@@ -277,7 +277,7 @@ const Register = () => {
         </motion.div>
 
         <motion.div
-          className="mt-4 text-center text-gray-600 text-sm"
+          className="mt-4 text-center text-base-content text-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}>

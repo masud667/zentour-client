@@ -11,6 +11,7 @@ import ManagePackage from "../pages/ManagePackage/ManagePackage";
 import PrivateRoute from "../context/PrivateRoute";
 import PackageDetails from "../Components/PackageDetails/PackageDetails";
 import BookingPage from "../pages/MyBookings/BookingPage";
+import ZenAboutPage from "../pages/ZenAboutPage ";
 
 const router = createBrowserRouter([
   {
@@ -69,8 +70,12 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
   },
+{
+  path: "/about",
+  Component: ZenAboutPage,
+},
 
-  {
+{
     path: "/*",
     Component: ErrorPage,
   },

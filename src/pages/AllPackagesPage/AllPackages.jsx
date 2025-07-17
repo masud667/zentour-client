@@ -33,7 +33,7 @@ const {user} = use(AuthContext);
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-cyan-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-base-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -41,7 +41,7 @@ const {user} = use(AuthContext);
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-cyan-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-cyan-600 mb-4">
             Explore Our Travel Packages
           </h1>
           <div className="h-1.5 bg-gradient-to-r from-cyan-500 to-teal-500 w-32 mx-auto rounded-full mb-6"></div>
@@ -64,7 +64,7 @@ const {user} = use(AuthContext);
             <input
               type="text"
               placeholder="Search by package name..."
-              className="w-full py-4 pl-12 pr-6 bg-white rounded-full shadow-lg border border-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg"
+              className="w-full py-4 pl-12 pr-6 bg-base-100 rounded-full shadow-lg border border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -96,7 +96,7 @@ const {user} = use(AuthContext);
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-cyan-100">
+                className="bg-base-100 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-cyan-100">
                 {/* Image */}
                 <div
                   className="relative h-56 bg-cover bg-center"
@@ -105,7 +105,7 @@ const {user} = use(AuthContext);
                   <h3 className="absolute bottom-4 left-4 text-white font-bold text-xl">
                     {pkg.name}
                   </h3>
-                  <div className="absolute top-4 right-4 bg-white/90 text-cyan-700 px-3 py-1 rounded-full font-bold flex items-center">
+                  <div className="absolute top-4 right-4 bg-base-100/90 text-cyan-700 px-3 py-1 rounded-full font-bold flex items-center">
                     <FaStar className="text-amber-400 mr-1" />
                     <span>{pkg.rating}</span>
                   </div>

@@ -48,7 +48,7 @@ const handlePackages =()=>{
   };
 
   return (
-    <div className="py-16 px-4 md:px-8 bg-gradient-to-b from-cyan-50 to-white">
+    <div className="py-16 px-4 md:px-8 bg-base-100 text-base-content">
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-16">
@@ -56,7 +56,7 @@ const handlePackages =()=>{
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-cyan-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-cyan-600 mb-4"
           >
             Featured Travel Packages
           </motion.h2>
@@ -87,7 +87,7 @@ const handlePackages =()=>{
               animate="visible"
               whileHover="hover"
               variants={cardVariants}
-              className="relative rounded-2xl overflow-hidden shadow-lg bg-white"
+              className="relative rounded-2xl overflow-hidden shadow-lg bg-base-100 text-base-content"
               onMouseEnter={() => setHoveredCard(pkg.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
@@ -110,21 +110,21 @@ const handlePackages =()=>{
               <div className="p-6">
                 <div className="flex items-center mb-4">
                   <div className="relative">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-teal-500 flex items-center justify-center">
-                      <FaUser className="text-white text-lg" />
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-300 flex items-center justify-center">
+                      <FaUser className="text-base-100 text-lg" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
                   </div>
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-500">Tour Guide</p>
-                    <p className="font-semibold text-cyan-800">{pkg.guide}</p>
+                    <p className="font-semibold text-cyan-300">{pkg.guide}</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center mr-3">
-                      <FaClock className="text-cyan-600" />
+                    <div className="w-10 h-10 rounded-full bg-cyan-300 flex items-center justify-center mr-3">
+                      <FaClock className="text-base-100" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-500">Duration</p>
@@ -132,8 +132,8 @@ const handlePackages =()=>{
                     </div>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center mr-3">
-                      <FaCalendarAlt className="text-cyan-600" />
+                    <div className="w-10 h-10 rounded-full bg-cyan-300 flex items-center justify-center mr-3">
+                      <FaCalendarAlt className="text-base-100" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-500">Departure</p>
@@ -141,8 +141,8 @@ const handlePackages =()=>{
                     </div>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center mr-3">
-                      <GiPathDistance className="text-cyan-600 text-lg" />
+                    <div className="w-10 h-10 rounded-full bg-cyan-300 flex items-center justify-center mr-3">
+                      <GiPathDistance className="text-base-100 text-lg" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-500">Distance</p>
@@ -150,8 +150,8 @@ const handlePackages =()=>{
                     </div>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center mr-3">
-                      <FaMapMarkerAlt className="text-cyan-600" />
+                    <div className="w-10 h-10 rounded-full bg-cyan-300 flex items-center justify-center mr-3">
+                      <FaMapMarkerAlt className="text-base-100" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-500">Spots</p>

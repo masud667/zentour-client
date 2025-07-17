@@ -51,8 +51,12 @@ const PackageDetails = () => {
     };
 
     try {
-      await axios.post("http://localhost:3000/bookings", bookingData);
-
+      await axios.post("https://zen-tour-server.vercel.app/bookings", bookingData);
+  // Booking count 
+    setTourPackage(prev => ({
+      ...prev,
+      bookingCount: (prev.bookingCount || 0) + 1,
+    }));
       Swal.fire({
         title: "Booking Confirmed!",
         text: "Your tour has been successfully booked.",
@@ -82,10 +86,10 @@ const PackageDetails = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
+      <div className="min-h-screen flex items-center justify-center bg-base-100">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="mt-4 text-gray-600 font-medium">
+          <p className="mt-4 text-base-content   font-medium">
             Loading tour details...
           </p>
         </div>
@@ -95,28 +99,27 @@ const PackageDetails = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
-        <div className="text-center p-8 bg-white rounded-xl shadow-lg max-w-md">
+      <div className="min-h-screen flex items-center justify-center bg-base-100">
+        <div className="text-center p-8 bg-base-100 rounded-xl shadow-lg max-w-md">
           <div className="text-5xl mb-4">😢</div>
           <h2 className="text-2xl font-bold text-red-500 mb-2">
             Package Not Found
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-base-content   mb-6">
             The tour package you're looking for doesn't exist or has been
             removed.
           </p>
           <button
             onClick={() => navigate("/packages")}
-            className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-medium py-2 px-6 rounded-lg transition-all">
+            className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan  hover:to-teal  text-base-content font-medium py-2 px-6 rounded-lg transition-all">
             Browse Other Tours
           </button>
         </div>
       </div>
     );
   }
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 pb-20">
+    <div className="min-h-screen bg-base-100 pb-20">
       <Navbar />
 
       <motion.div
@@ -140,11 +143,11 @@ const PackageDetails = () => {
               </div>
             </div>
 
-            <div className="mt-6 bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold mb-4 text-gray-800">
+            <div className="mt-6 bg-base-100 rounded-2xl shadow-lg p-6">
+              <h2 className="text-xl font-bold mb-4 text-cyan ">
                 Full Description
               </h2>
-              <p className="text-gray-600 mt-2">
+              <p className="text-base-content mt-2">
                 Join our <span className="font-medium">{tourPackage.name}</span>{" "}
                 tour to explore {tourPackage.destination} for{" "}
                 {tourPackage.duration}. Guided by{" "}
@@ -155,13 +158,13 @@ const PackageDetails = () => {
 
           {/* Right Column */}
           <div>
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-gradient-to-r from-cyan-500 to-teal-500 p-4 text-center">
-                <h3 className="text-xl font-bold text-white">Tour Details</h3>
+            <div className="bg-base-100 rounded-2xl shadow-xl overflow-hidden">
+              <div className="bg-gradient-to-r from-cyan-500 to-teal-500 p-4 text-center ">
+                <h3 className="text-xl font-bold text-base-content">Tour Details</h3>
               </div>
               <div className="p-6">
                 <div className="mb-4">
-                  <span className="text-gray-600 block">Guide:</span>
+                  <span className="text-base-content   block">Guide:</span>
                   <div className="flex items-center mt-2">
                     <img
                       src={tourPackage.guideImage}
@@ -170,7 +173,7 @@ const PackageDetails = () => {
                     />
                     <div className="ml-3">
                       <p className="font-medium">{tourPackage.guide}</p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-base-content  ">
                         Contact: {tourPackage.guideContact}
                       </p>
                     </div>
@@ -178,19 +181,19 @@ const PackageDetails = () => {
                 </div>
 
                 <div className="mb-2">
-                  <span className="text-gray-600">Duration:</span>
+                  <span className="text-base-content  ">Duration:</span>
                   <p className="font-medium">{tourPackage.duration}</p>
                 </div>
                 <div className="mb-2">
-                  <span className="text-gray-600">Price:</span>
+                  <span className="text-base-content  ">Price:</span>
                   <p className="font-medium">{tourPackage.price}</p>
                 </div>
                 <div className="mb-2">
-                  <span className="text-gray-600">Booking Count:</span>
+                  <span className="text-base-content  ">Booking Count:</span>
                   <p className="font-medium">{tourPackage.bookingCount}</p>
                 </div>
                 <div className="mb-2">
-                  <span className="text-gray-600">
+                  <span className="text-base-content  ">
                     Departure Location & Date:
                   </span>
                   <p className="font-medium">
@@ -198,13 +201,13 @@ const PackageDetails = () => {
                   </p>
                 </div>
                 <div className="mb-4">
-                  <span className="text-gray-600">Destination:</span>
+                  <span className="text-base-content  ">Destination:</span>
                   <p className="font-medium">{tourPackage.destination}</p>
                 </div>
 
                 <button
                   onClick={() => setShowModal(true)}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-teal-600 hover:to-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-teal  hover:to-cyan-700 text-base-content font-bold py-3 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration ">
                   Book Now
                 </button>
               </div>
@@ -222,9 +225,9 @@ const PackageDetails = () => {
           <motion.div
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
-            className="bg-white rounded-2xl max-w-md w-full overflow-hidden">
+            className="bg-base-100 rounded-2xl max-w-md w-full overflow-hidden">
             <div className="bg-gradient-to-r from-cyan-500 to-teal-500 p-4">
-              <h3 className="text-xl font-bold text-white">
+              <h3 className="text-xl font-bold text-base-content">
                 Confirm Your Booking
               </h3>
             </div>
@@ -251,11 +254,11 @@ const PackageDetails = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2">
+                <label className="block text-base-content -700 mb-2">
                   Special Note (optional)
                 </label>
                 <textarea
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full p-3 border border-gray  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Any special request..."
                   rows="3"
                   value={specialNote}
@@ -265,12 +268,12 @@ const PackageDetails = () => {
               <div className="flex justify-between mt-6">
                 <button
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                  className="px-4 py-2 border border-gray  rounded-lg text-base-content -700 hover:bg-gray-100 transition-colors">
                   Cancel
                 </button>
                 <button
                   onClick={handleBooking}
-                  className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-teal-600 hover:to-cyan-700 text-white font-medium rounded-lg shadow hover:shadow-md transition-all">
+                  className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-teal  hover:to-cyan-700 text-base-content font-medium rounded-lg shadow hover:shadow-md transition-all">
                   Confirm Booking
                 </button>
               </div>

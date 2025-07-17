@@ -6,7 +6,7 @@ import MindfulRetreats from "./Shared/MindfulRetreats";
 
 const Home = () => {
   return (
-    <div className='w-11/12 mx-auto'>
+    <div >
       <Banner></Banner>
       <FeaturedPackages></FeaturedPackages>
       <ZenExperiences></ZenExperiences>

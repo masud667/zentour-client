@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 
-      axios.get('http://localhost:3000', {
+      axios.get('https://zen-tour-server.vercel.app', {
         headers: {
           Authorization : `Bearer ${currentUser.accessToken}`
         }

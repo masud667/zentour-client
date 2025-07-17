@@ -27,7 +27,7 @@ const ManagePackages = () => {
     const fetchPackages = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:3000/packages");
+        const response = await axios.get("https://zen-tour-server.vercel.app/packages");
         setPackages(response.data);
         setLoading(false);
       } catch (err) {
@@ -67,7 +67,7 @@ const ManagePackages = () => {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/packages/${formData._id}`,
+        `https://zen-tour-server.vercel.app/packages/${formData._id}`,
         formData
       );
       Swal.fire("Updated!", "Package updated successfully.", "success");
@@ -75,7 +75,7 @@ const ManagePackages = () => {
       setShowEditModal(false);
 
       // Reload packages
-      const response = await axios.get("http://localhost:3000/packages");
+      const response = await axios.get("https://zen-tour-server.vercel.app/packages");
       setPackages(response.data);
     } catch (error) {
       console.error("Error updating package:", error);
@@ -97,7 +97,7 @@ const ManagePackages = () => {
       });
 
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:3000/packages/${id}`);
+        await axios.delete(`https://zen-tour-server.vercel.app/packages/${id}`);
         Swal.fire("Deleted!", "Package has been deleted.", "success");
 
         // Update UI after delete
@@ -135,7 +135,7 @@ const ManagePackages = () => {
         </div>
 
         <div className="mb-4 relative">
-          <FaSearch className="absolute top-3 left-3 text-gray-400" />
+          <FaSearch className="absolute top-3 left-3 text-cyan-500" />
           <input
             type="text"
             value={searchTerm}
@@ -145,9 +145,9 @@ const ManagePackages = () => {
           />
         </div>
 
-        <div className="bg-white shadow rounded overflow-x-auto">
+        <div className="bg-base-100 shadow rounded overflow-x-auto">
           <table className="min-w-full text-sm">
-            <thead className="bg-gray-50">
+            <thead className="bg-base-50">
               <tr>
                 <th className="px-4 py-2 text-left">Package</th>
                 <th className="px-4 py-2 text-left">Destination</th>
@@ -201,8 +201,8 @@ const ManagePackages = () => {
         </div>
 
         {showEditModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded shadow-lg w-full max-w-2xl p-6 relative">
+          <div className="fixed inset-0 bg-base-100 flex items-center justify-center p-4 z-50">
+            <div className="bg-base-100 rounded shadow-lg w-full max-w-2xl p-6 relative">
               <h2 className="text-xl font-bold mb-4">Edit Package</h2>
               <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
