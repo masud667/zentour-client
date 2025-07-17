@@ -1,8 +1,8 @@
 import React from "react";
 import Banner from "./Shared/Banner";
 import FeaturedPackages from "./Shared/FeaturedPackages";
-import BdInfo from "./Shared/BdInfo";
 import ZenExperiences from "./Shared/ZenExperiences";
+import MindfulRetreats from "./Shared/MindfulRetreats";
 
 const Home = () => {
   return (
@@ -10,7 +10,8 @@ const Home = () => {
       <Banner></Banner>
       <FeaturedPackages></FeaturedPackages>
       <ZenExperiences></ZenExperiences>
-      <BdInfo></BdInfo>
+      <MindfulRetreats></MindfulRetreats>
+     
     </div>
   );
 };

@@ -75,31 +75,29 @@ const ZenExperiences = () => {
     <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
-         <div className="text-center mb-16">
-                  <motion.h2
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-4xl md:text-5xl font-bold text-cyan-900 mb-4"
-                  >
-                    Serene Bangladesh Experiences
-                  </motion.h2>
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: "150px" }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
-                    className="h-1.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full mb-6"
-                  />
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
-                    className="text-lg text-cyan-700 max-w-2xl mx-auto"
-                  >
-                    Discover the tranquil beauty of Bangladesh through mindful journeys
+        <div className="text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-bold text-cyan-900 mb-4">
+            Serene Bangladesh Experiences
+          </motion.h2>
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "150px" }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="h-1.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full mb-6"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="text-lg text-cyan-700 max-w-2xl mx-auto">
+            Discover the tranquil beauty of Bangladesh through mindful journeys
             that reconnect you with nature and self
-                  </motion.p>
-                </div>
+          </motion.p>
+        </div>
 
         {/* Experience Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -116,7 +114,7 @@ const ZenExperiences = () => {
                         {experiences[activeExperience].location}
                       </span>
                     </div>
-                    <h3 className="text-3xl font-serif font-medium text-slate-800">
+                    <h3 className="text-3xl   font-medium text-slate-800">
                       {experiences[activeExperience].title}
                     </h3>
                   </div>
@@ -137,8 +135,8 @@ const ZenExperiences = () => {
                     {experiences[activeExperience].duration}
                   </span>
                   <Link
-                  to="/packages" 
-                  className="btn bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-0 hover:from-teal-500 hover:to-cyan-500 px-8 rounded-full">
+                    to="/packages"
+                    className="btn bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-0 hover:from-teal-500 hover:to-cyan-500 px-8 rounded-full">
                     Book Journey
                   </Link>
                 </div>
@@ -226,7 +224,7 @@ const ZenExperiences = () => {
 
         {/* Cultural Insight */}
         <div className="mt-16 max-w-4xl mx-auto bg-gradient-to-r from-emerald-50 to-teal-50 rounded-3xl p-8 text-center border border-emerald-100">
-          <h3 className="text-2xl font-serif text-slate-800 mb-4">
+          <h3 className="text-2xl   text-slate-800 mb-4">
             "In Bangladesh, the rivers teach us to flow, the forests teach us
             resilience, and the people teach us warmth."
           </h3>
