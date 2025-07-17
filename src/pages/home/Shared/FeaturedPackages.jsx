@@ -7,7 +7,8 @@ import {
   FaMapMarkerAlt,
   FaStar,
   FaChevronRight,
-  FaUser
+  FaUser,
+  FaYinYang
 } from "react-icons/fa";
 import { GiPathDistance, GiSuitcase } from "react-icons/gi";
 
@@ -49,6 +50,7 @@ const handlePackages =()=>{
   return (
     <div className="py-16 px-4 md:px-8 bg-gradient-to-b from-cyan-50 to-white">
       <div className="max-w-7xl mx-auto">
+        
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: -20 }}

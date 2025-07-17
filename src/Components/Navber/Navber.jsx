@@ -136,7 +136,7 @@ const Navbar = () => {
             <>
               <li className="ml-4 border-l pl-4 border-gray-200">
                 <NavLink
-                  to="/my-bookings"
+                  to="/bookings"
                   className={({ isActive }) =>
                     isActive
                       ? "text-cyan-600 font-semibold"

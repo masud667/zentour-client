@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.init";
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
 
@@ -37,6 +38,12 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+
+      axios.get('http://localhost:3000', {
+        headers: {
+          Authorization : `Bearer ${currentUser.accessToken}`
+        }
+      })
       setUser(currentUser);
       setLoading(false)
     });
