@@ -137,7 +137,7 @@ const ZenExperiences = () => {
                   <Link
                     to="/packages"
                     className="btn bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-0 hover:from-teal-500 hover:to-cyan-500 px-8 rounded-full">
-                    Book Journey
+                    Book Journey Now
                   </Link>
                 </div>
               </div>
