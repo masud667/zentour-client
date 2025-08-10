@@ -1,7 +1,35 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { FaYinYang, FaLeaf, FaWater, FaMountain, FaFacebookF, FaTwitter, FaInstagram, FaTripadvisor, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const Footer = () => {
+   const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+ try {
+  const res = await axios.post("http://localhost:3000/subscribe", { email });
+
+  Swal.fire({
+    icon: "success",
+    title: "Subscribed!",
+    text: res.data.message,
+    confirmButtonColor: "#06b6d4", 
+            timer: 2000,
+        showConfirmButton: false,
+  });
+
+  setEmail("");
+} catch (err) {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: err.response?.data?.message || "Something went wrong",
+    confirmButtonColor: "#ef4444", 
+  });
+}
+  }
   return (
     <footer className="bg-base-100 pt-20 pb-10 border-t border-cyan-300 p-3">
       {/* Main Footer Content */}
@@ -123,11 +151,13 @@ const Footer = () => {
             <p className="text-base-content mb-4">
               Subscribe to receive peaceful inspirations and special offers for your next Zen journey.
             </p>
-            <form className="mb-4">
+            <form className="mb-4" onSubmit={handleSubmit}>
               <div className="flex">
                 <input 
                   type="email" 
+                  value={email}
                   placeholder="Your email address" 
+                   onChange={(e) => setEmail(e.target.value)}
                   className="pl-2 py-3 rounded-l-lg border border-r-0 border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent"
                 />
                 <button 
