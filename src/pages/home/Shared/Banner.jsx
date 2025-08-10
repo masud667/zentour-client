@@ -64,7 +64,7 @@ const Banner = () => {
       </div>
       
       {/* Content Container */}
-      <div className="relative z-10 px-6 py-12 md:px-12 md:py-20 lg:px-16 lg:py-24 flex flex-col lg:flex-row">
+      <div className="w-11/12 mx-auto relative z-10 py-12 md:py-20 lg:py-24 flex flex-col lg:flex-row">
         {/* Text Content */}
         <div className="lg:w-7/12 mb-10 lg:mb-0">
           <motion.h1 

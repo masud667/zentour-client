@@ -14,7 +14,7 @@ const MindfulRetreats = () => {
       price: "$320",
       rating: 4.9,
       icon: <FaLeaf className="text-cyan-500" />,
-      features: ["River meditation", "Forest bathing", "Wildlife observation", "Traditional Bengali meals"]
+      features: ["River meditation", "Forest bathing", "Wildlife observation", "Traditional meals"]
     },
     {
       id: 2,
@@ -71,7 +71,7 @@ const MindfulRetreats = () => {
 
   return (
     <section className="py-20bg-base-100 text-base-content">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="w-11/12 mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
                   <motion.h2
@@ -100,10 +100,10 @@ const MindfulRetreats = () => {
           {retreats.map(retreat => (
             <div 
               key={retreat.id}
-              className="bg-base-100 text-base-content rounded-3xl overflow-hidden shadow-xl border-base-300 border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+              className="bg-base-100 text-base-content rounded-3xl overflow-hidden shadow-xl border-base-100 border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
             >
               {/* Retreat Header */}
-              <div className="bg-gradient-to-r from-cyan-800 to-slate-900 text-white p-6">
+              <div className="bg-gradient-to-r from-cyan-600 to-slate-600 text-white p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
                     <div className="bg-base-100 bg-opacity-20 p-2 rounded-lg mr-3">
@@ -151,7 +151,7 @@ const MindfulRetreats = () => {
                 {/* Price and CTA */}
                 <div className="flex justify-between items-center">
                   <span className="text-2xl   font-medium text-base-800">{retreat.price}</span>
-                  <button className="btn bg-gradient-to-r from-cyan-500 to-teal-500 text-base-content border-0 hover:from-cyan-600 hover:to-teal-600 px-6 rounded-full">
+                  <button className="btn bg-gradient-to-r from-cyan-500 to-teal-500 text-base-content border-0 hover:from-cyan-600 hover:to-teal-600 px-6 rounded-full text-white">
                     Reserve
                   </button>
                 </div>
@@ -161,7 +161,7 @@ const MindfulRetreats = () => {
         </div>
 
         {/* Local Practices Section */}
-        <div className="bg-base-100 rounded-3xl p-8 mb-16 border border-teal-100">
+        <div className="bg-base-200 rounded-3xl p-8 mb-16 ">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <h3 className="text-3xl   font-light text-base-content mb-4">
@@ -176,7 +176,7 @@ const MindfulRetreats = () => {
               {practices.map(practice => (
                 <div 
                   key={practice.id}
-                  className="bg-base-100 border border-cyan-300 bg-opacity-70 rounded-2xl p-6 text-center hover:bg-base-100 transition-all"
+                  className="bg-base-100 bg-opacity-70 rounded-2xl p-6 text-center hover:bg-base-100 transition-all"
                 >
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-teal-100 mb-5">
                     <span className="text-2xl">{practice.icon}</span>
@@ -190,8 +190,8 @@ const MindfulRetreats = () => {
         </div>
 
         {/* Wisdom Section */}
-        <div className="flex flex-col lg:flex-row items-center bg-base-100 rounded-3xl overflow-hidden">
-          <div className="lg:w-1/2 p-10 lg:p-16">
+        <div className="flex flex-col lg:flex-row items-center bg-base-100 rounded-3xl overflow-hidden ">
+          <div className="lg:w-1/2 p-5">
             <div className="inline-block bg-gradient-to-r from-amber-400 to-orange-500 text-base-content px-4 py-1 rounded-full mb-4">
               Bengali Wisdom
             </div>
@@ -205,15 +205,15 @@ const MindfulRetreats = () => {
               Discover Our Philosophy
             </button>
           </div>
-          <div className="w-3/5 lg:1/2 relative">
+          <div className="w-3/5 p-5 relative">
             <div className="grid grid-cols-2 gap-4 p-6">
               <div className="bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl h-48"></div>
-              <div className="bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl h-48 mt-8"></div>
-              <div className="bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl h-48"></div>
-              <div className="bg-gradient-to-br from-violet-500 to-purple-500 rounded-2xl h-48 mt-8"></div>
+              <div className="bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl h-48 "></div>
+              <div className="bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl h-48 "></div>
+              <div className="bg-gradient-to-br from-violet-500 to-purple-500 rounded-2xl h-48 "></div>
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-base-100 w-24 h-24 rounded-full flex items-center justify-center">
+              <div className="bg-base-100 md:w-24 md:h-24 w-15 h-15 rounded-full flex items-center justify-center">
                <span className='text-3xl'>✈️</span>
               </div>
             </div>

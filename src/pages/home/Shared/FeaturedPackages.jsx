@@ -48,8 +48,8 @@ const handlePackages =()=>{
   };
 
   return (
-    <div className="py-16 px-4 md:px-8 bg-base-100 text-base-content">
-      <div className="max-w-7xl mx-auto">
+    <div className="py-16 bg-base-100 text-base-content">
+      <div className="w-11/12 mx-auto">
         
         <div className="text-center mb-16">
           <motion.h2
