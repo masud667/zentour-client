@@ -12,6 +12,8 @@ import PrivateRoute from "../context/PrivateRoute";
 import PackageDetails from "../Components/PackageDetails/PackageDetails";
 import BookingPage from "../pages/MyBookings/BookingPage";
 import ZenAboutPage from "../pages/ZenAboutPage ";
+import TermsAndConditions from "../Components/Footer/TermsAndConditions";
+import PrivacyPolicy from "../Components/Footer/PrivacyPolicy";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +75,14 @@ const router = createBrowserRouter([
 {
   path: "/about",
   Component: ZenAboutPage,
+},
+{
+  path: "/terms",
+  Component: TermsAndConditions,
+},
+{
+  path: "/PrivacyPolicy",
+  Component: PrivacyPolicy,
 },
 
 {

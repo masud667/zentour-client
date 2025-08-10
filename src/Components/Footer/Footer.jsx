@@ -50,16 +50,16 @@ const Footer = () => {
               Journey inward through the natural wonders of Bangladesh. We curate mindful travel experiences that reconnect you with nature and self.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-base-100 w-10 h-10 rounded-full flex items-center justify-center text-cyan-500 hover:bg-cyan-500 hover:text-white transition-all shadow-sm">
+              <a href="https://facebook.com" className="bg-base-100 w-10 h-10 rounded-full flex items-center justify-center text-cyan-500 hover:bg-cyan-500 hover:text-white transition-all shadow-sm">
                 <FaFacebookF />
               </a>
-              <a href="#" className="bg-base-100 w-10 h-10 rounded-full flex items-center justify-center text-cyan-500 hover:bg-cyan-500 hover:text-white transition-all shadow-sm">
+              <a href="https://instagram.com" className="bg-base-100 w-10 h-10 rounded-full flex items-center justify-center text-cyan-500 hover:bg-cyan-500 hover:text-white transition-all shadow-sm">
                 <FaInstagram />
               </a>
-              <a href="#" className="bg-base-100 w-10 h-10 rounded-full flex items-center justify-center text-cyan-500 hover:bg-cyan-500 hover:text-white transition-all shadow-sm">
+              <a href="https://twitter.com" className="bg-base-100 w-10 h-10 rounded-full flex items-center justify-center text-cyan-500 hover:bg-cyan-500 hover:text-white transition-all shadow-sm">
                 <FaTwitter />
               </a>
-              <a href="#" className="bg-base-100 w-10 h-10 rounded-full flex items-center justify-center text-cyan-500 hover:bg-cyan-500 hover:text-white transition-all shadow-sm">
+              <a href="https://tripadvisor.com" className="bg-base-100 w-10 h-10 rounded-full flex items-center justify-center text-cyan-500 hover:bg-cyan-500 hover:text-white transition-all shadow-sm">
                 <FaTripadvisor />
               </a>
             </div>
@@ -73,31 +73,31 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
+                <a href="packages/2" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
                   <span className="text-cyan-400 mr-2">›</span>
                   <span>Sundarbans Meditation Retreat</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
+                <a href="/packages/1" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
                   <span className="text-cyan-400 mr-2">›</span>
-                  <span>Hill Tracts Yoga Experience</span>
+                  <span>Cox's Bazar Coastal Escape</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
+                <a href="packages/5" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
                   <span className="text-cyan-400 mr-2">›</span>
-                  <span>River Delta Harmony Cruise</span>
+                  <span>Rangamati Lake Tour</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
+                <a href="packages/10" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
                   <span className="text-cyan-400 mr-2">›</span>
-                  <span>Tea Garden Mindfulness</span>
+                  <span>Comilla Heritage Explorer</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
+                <a href="packages/6" className="text-base-content hover:text-cyan-500 transition-colors flex items-start">
                   <span className="text-cyan-400 mr-2">›</span>
                   <span>Cultural Harmony Tour</span>
                 </a>
@@ -184,9 +184,9 @@ const Footer = () => {
             © {new Date().getFullYear()} Zen Tour Bangladesh. All rights reserved.
           </div>
           <div className="flex space-x-6">
-            <a href="#" className="text-base-content hover:text-cyan-500 text-sm">Privacy Policy</a>
-            <a href="#" className="text-base-content hover:text-cyan-500 text-sm">Terms of Service</a>
-            <a href="#" className="text-base-content hover:text-cyan-500 text-sm">Sustainability</a>
+            <a href="/PrivacyPolicy" className="text-base-content hover:text-cyan-500 text-sm">Privacy Policy</a>
+            <a href="/terms" className="text-base-content hover:text-cyan-500 text-sm">Terms of Service</a>
+            <a className="text-base-content hover:text-cyan-500 text-sm">Sustainability</a>
           </div>
         </div>
       </div>

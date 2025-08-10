@@ -20,7 +20,7 @@ const Banner = () => {
 
   const packageTypes = [
     { name: 'Tropical Escapes', icon: <FaUmbrellaBeach />, color: 'text-amber-300' },
-    { name: 'Mountain Expeditions', icon: <FaMountain  r/>, color: 'text-emerald-300' },
+    { name: 'Mountain Expeditions', icon: <FaMountain  />, color: 'text-emerald-300' },
     { name: 'Cultural Journeys', icon: <FaLandmark />, color: 'text-purple-300' },
     { name: 'Luxury Voyages', icon: <FaShip />, color: 'text-sky-300' },
   ];
