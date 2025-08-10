@@ -4,6 +4,7 @@ import FeaturedPackages from "./Shared/FeaturedPackages";
 import ZenExperiences from "./Shared/ZenExperiences";
 import MindfulRetreats from "./Shared/MindfulRetreats";
 import TravelInspirationGallery from "../../Components/TravelInspirationGallery";
+import SeasonalDeals from "../../Components/SeasonalDeals";
 
 const Home = () => {
   return (
@@ -12,9 +13,8 @@ const Home = () => {
       <FeaturedPackages></FeaturedPackages>
       <ZenExperiences></ZenExperiences>
       <MindfulRetreats></MindfulRetreats>
-     <TravelInspirationGallery></TravelInspirationGallery>
-
-
+      <TravelInspirationGallery></TravelInspirationGallery>
+      <SeasonalDeals></SeasonalDeals>
     </div>
   );
 };

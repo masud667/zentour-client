@@ -9,78 +9,81 @@ const TravelInspirationGallery = () => {
   const [selectedDestination, setSelectedDestination] = useState(null);
 
   // Sample destinations data
-  const destinations = [
-    {
-      id: 1,
-      title: "Bali Paradise",
-      description:
-        "Experience tropical beaches and vibrant culture in Indonesia's island paradise.",
-      location: "Indonesia",
-      price: "$1,299",
-      duration: "7 Days",
-      rating: 4.8,
-      category: "beach",
-      image: "https://i.ibb.co.com/gMxLcFgs/1p.jpg",
-    },
-    {
-      id: 2,
-      title: "Alpine Retreat",
-      description: "Snow-capped mountains and cozy chalets in the Swiss Alps.",
-      location: "Switzerland",
-      price: "$2,499",
-      duration: "5 Days",
-      rating: 4.9,
-      category: "mountain",
-      image: "https://i.ibb.co.com/fzmDMLN5/2.jpg",
-    },
-    {
-      id: 3,
-      title: "Safari Adventure",
-      description:
-        "Wildlife safari experience in the heart of African savannah.",
-      location: "Kenya",
-      price: "$3,199",
-      duration: "10 Days",
-      rating: 4.7,
-      category: "adventure",
-      image: "https://i.ibb.co.com/HS5THXR/3.jpg",
-    },
-    {
-      id: 4,
-      title: "Tokyo Discovery",
-      description:
-        "Modern metropolis blending technology with ancient traditions.",
-      location: "Japan",
-      price: "$2,899",
-      duration: "8 Days",
-      rating: 4.6,
-      category: "city",
-      image: "https://i.ibb.co.com/RpNXYwFM/4.jpg",
-    },
-    {
-      id: 5,
-      title: "Venetian Romance",
-      description:
-        "Gondola rides through historic canals and Renaissance architecture.",
-      location: "Italy",
-      price: "$1,899",
-      duration: "6 Days",
-      rating: 4.5,
-      category: "romantic",
-      image: "https://i.ibb.co.com/76PhM7b/5.jpg",
-    },
-    {
-      id: 6,
-      title: "Rainforest Expedition",
-      description: "Explore biodiverse ecosystems and indigenous cultures.",
-      location: "Costa Rica",
-      price: "$2,199",
-      duration: "9 Days",
-      rating: 4.8,
-      category: "adventure",
-      image: "https://i.ibb.co.com/CsNKLVjF/6.jpg",
-    },
-  ];
+const destinations = [
+  {
+    id: 1,
+    title: "Saint Martin’s Paradise",
+    description:
+      "Crystal-clear waters, coral reefs, and the tranquil beauty of Bangladesh’s only coral island.",
+    location: "Saint Martin’s Island, Bangladesh",
+    price: "$499",
+    duration: "3 Days",
+    rating: 4.8,
+    category: "beach",
+    image: "https://i.ibb.co.com/gMxLcFgs/1p.jpg",
+  },
+  {
+    id: 2,
+    title: "Bandarban Hill Retreat",
+    description:
+      "Rolling green hills, tribal culture, and the serenity of the Chimbuk range.",
+    location: "Bandarban, Bangladesh",
+    price: "$699",
+    duration: "4 Days",
+    rating: 4.9,
+    category: "mountain",
+    image: "https://i.ibb.co.com/fzmDMLN5/2.jpg",
+  },
+  {
+    id: 3,
+    title: "Sundarbans Wildlife Safari",
+    description:
+      "Explore the world’s largest mangrove forest and spot the majestic Royal Bengal Tiger.",
+    location: "Sundarbans, Bangladesh",
+    price: "$799",
+    duration: "5 Days",
+    rating: 4.7,
+    category: "adventure",
+    image: "https://i.ibb.co.com/HS5THXR/3.jpg",
+  },
+  {
+    id: 4,
+    title: "Dhaka Heritage Discovery",
+    description:
+      "From Lalbagh Fort to Ahsan Manzil, experience the vibrant history of the capital city.",
+    location: "Dhaka, Bangladesh",
+    price: "$399",
+    duration: "2 Days",
+    rating: 4.6,
+    category: "city",
+    image: "https://i.ibb.co.com/RpNXYwFM/4.jpg",
+  },
+  {
+    id: 5,
+    title: "Cox’s Bazar Romance",
+    description:
+      "Walk hand in hand along the world’s longest natural sea beach under golden sunsets.",
+    location: "Cox’s Bazar, Bangladesh",
+    price: "$599",
+    duration: "3 Days",
+    rating: 4.5,
+    category: "romantic",
+    image: "https://i.ibb.co.com/76PhM7b/5.jpg",
+  },
+  {
+    id: 6,
+    title: "Sylhet Tea Garden Expedition",
+    description:
+      "Wander through endless tea estates and discover the charm of rural Sylhet.",
+    location: "Sylhet, Bangladesh",
+    price: "$549",
+    duration: "4 Days",
+    rating: 4.8,
+    category: "adventure",
+    image: "https://i.ibb.co.com/CsNKLVjF/6.jpg",
+  },
+];
+
 
   const categories = [
     { id: "all", name: "All Destinations" },
@@ -267,10 +270,13 @@ const TravelInspirationGallery = () => {
               exit={{ scale: 0.9, y: 20 }}
               className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}>
-              <div
-                className={`bg-gradient-to-r from-cyan-500 to-cyan-300 h-64 flex items-center justify-center text-white font-bold text-2xl`}>
-                {selectedDestination.image.toUpperCase()}
-              </div>
+             <div
+                  className="h-48 flex items-center justify-center text-white font-bold bg-center bg-cover"
+                  style={{
+                    backgroundImage: `url(${selectedDestination.image})`,
+                  }}>
+                  {selectedDestination.name}
+                </div>
 
               <div className="p-6">
                 <div className="flex justify-between items-start">
